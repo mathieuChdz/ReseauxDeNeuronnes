@@ -2,6 +2,7 @@
 /data/*.jpg
 /data/*.png
 /data/*.jpeg
+/models/output_gan/*
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
