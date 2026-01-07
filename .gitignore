@@ -1,5 +1,6 @@
 /data/train2014/
 /data
+/models/output_gan/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
