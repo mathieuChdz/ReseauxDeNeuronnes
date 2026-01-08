@@ -1,6 +1,9 @@
 /data/train2014/
 /data
 /models/output_gan/
+/scripts/test_results_metrics/
+/scripts/samples/
+/scripts/*.pth
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
