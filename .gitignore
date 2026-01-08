@@ -3,7 +3,9 @@
 /data/*.png
 /data/*.jpeg
 /models/output_gan/*
-
+/scripts/samples/
+/scripts/test_results_metrics/
+/scripts/*.pth
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]
