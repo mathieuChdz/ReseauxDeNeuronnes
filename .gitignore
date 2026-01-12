@@ -2,6 +2,15 @@
 /data/*.jpg
 /data/*.png
 /data/*.jpeg
+/data/train/*
+/data/train.zip
+/data/test/*
+/data/test.zip
+
+models/__pycache__/
+/models/*.pth
+gan_env/
+
 /models/output_gan/*
 /scripts/samples/
 /scripts/test_results_metrics/
