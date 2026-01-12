@@ -6,6 +6,7 @@
 /scripts/samples/
 /scripts/test_results_metrics/
 /scripts/*.pth
+/scripts/*.csv
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]
