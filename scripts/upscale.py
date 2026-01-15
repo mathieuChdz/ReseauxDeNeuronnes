@@ -1,16 +1,16 @@
-from super_image import EdsrModel, ImageLoader
 from PIL import Image
+import torch
+from py_real_esrgan.model import RealESRGAN
 
-# 1. Charger votre image restaurée en 128x128
-image = Image.open('scripts\\resultat_restauration_128.png')
+device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
-# 2. Charger le modèle pré-entraîné (ex: EDSR x4)
-model = EdsrModel.from_pretrained('eugenesiow/edsr-base', scale=4)
+# modèle x4
+model = RealESRGAN(device, scale=4)
+model.load_weights('weights/RealESRGAN_x4.pth', download=True)
 
-# 3. Effectuer l'upscale (128x128 -> 512x512)
-inputs = ImageLoader.load_image(image)
-preds = model(inputs)
+# ton image restaurée 128x128
+img = Image.open('scripts\\resultat_restauration_128.jpg').convert('RGB')
 
-# 4. Sauvegarder le résultat final "pro"
-ImageLoader.save_image(preds, 'scripts\\output_final_512.png')
-print("Upscale terminé !")
+# upscale
+sr = model.predict(img)  # ~512x512
+sr.save('scripts\\resultat_restauration.jpg')

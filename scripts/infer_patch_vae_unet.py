@@ -6,8 +6,8 @@ from PIL import Image
 import os
 
 # ------------ CONFIGURATION ------------
-IMAGE_INPUT_PATH = "scripts\\image.png"  # Image à corriger
-IMAGE_OUTPUT_PATH = "scripts\\resultat_restauration_128.png"
+IMAGE_INPUT_PATH = "scripts\\degraded_image_000075.jpg"  # Image à corriger
+IMAGE_OUTPUT_PATH = "scripts\\resultat_restauration_128.jpg"
 CHECKPOINT_PATH = "scripts\\vae_unet_best.pth"
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 

@@ -5,6 +5,8 @@
 /scripts/samples/
 /scripts/*.pth
 /scripts/*.csv
+/scripts/*.jpg
+/weights/*.pth
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
