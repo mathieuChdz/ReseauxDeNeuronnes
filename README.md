@@ -32,3 +32,48 @@ pip install -r requirements.txt
 
 # 2) Lancer l'inférence
 python scripts/inference.py
+
+## 🖼️ Résultats — Avant / Après
+
+<p align="center">
+  <img src="assets/before1.jpg" width="30%" />
+  <img src="assets/after1.jpg"  width="30%" />
+</p>
+
+<p align="center">
+  <img src="assets/before2.jpg" width="30%" />
+  <img src="assets/after2.jpg"  width="30%" />
+</p>
+
+<p align="center">
+  <img src="assets/before3.jpg" width="30%" />
+  <img src="assets/after3.jpg"  width="30%" />
+</p>
+
+<p align="center">
+  <img src="assets/before4.jpg" width="30%" />
+  <img src="assets/after4.jpg"  width="30%" />
+</p>
+
+<p align="center">
+  <img src="assets/before5.jpg" width="30%" />
+  <img src="assets/after5.jpg"  width="30%" />
+</p>
+
+<p align="center">
+  <em>À gauche : image dégradée • À droite : image restaurée par le modèle VAE-UNet</em>
+</p>
+
+
+## ⚠️ Limites connues
+
+- 🧍‍♂️ Le modèle fonctionne **nettement mieux lorsqu’une seule personne** est présente dans l’image.
+- 👥 Les performances diminuent lorsque **plusieurs personnes** apparaissent simultanément.
+- 🖼️ La résolution est limitée à **128×128 pixels**, ce qui peut entraîner :
+  - une perte de détails fins,
+  - des artefacts sur les visages ou les contours complexes.
+- 🧠 Ces limites sont liées :
+  - à la capacité du modèle,
+  - à la résolution d’entraînement,
+  - et à la distribution des données d’apprentissage.
+
