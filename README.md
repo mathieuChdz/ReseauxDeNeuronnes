@@ -37,34 +37,35 @@ python scripts/inference.py
 
 ## 🖼️ Résultats — Avant / Après
 
-<p align="center">
-  <img src="assets/before1.jpg" width="10%" />
-  <img src="assets/after1.jpg"  width="10%" />
-</p>
+## 🖼️ Résultats — Avant / Après (128×128)
 
-<p align="center">
-  <img src="assets/before2.jpg" width="10%" />
-  <img src="assets/after2.jpg"  width="10%" />
-</p>
+<table align="center">
+  <tr>
+    <th>Avant ❌</th>
+    <th>Après ✅</th>
+    <th>Avant ❌</th>
+    <th>Après ✅</th>
+    <th>Avant ❌</th>
+    <th>Après ✅</th>
+  </tr>
+  <tr>
+    <td><img src="assets/before1.jpg" width="96"/></td>
+    <td><img src="assets/after1.jpg"  width="96"/></td>
+    <td><img src="assets/before2.jpg" width="96"/></td>
+    <td><img src="assets/after2.jpg"  width="96"/></td>
+    <td><img src="assets/before3.jpg" width="96"/></td>
+    <td><img src="assets/after3.jpg"  width="96"/></td>
+  </tr>
+  <tr>
+    <td><img src="assets/before4.jpg" width="96"/></td>
+    <td><img src="assets/after4.jpg"  width="96"/></td>
+    <td><img src="assets/before5.jpg" width="96"/></td>
+    <td><img src="assets/after5.jpg"  width="96"/></td>
+    <td></td>
+    <td></td>
+  </tr>
+</table>
 
-<p align="center">
-  <img src="assets/before3.jpg" width="10%" />
-  <img src="assets/after3.jpg"  width="10%" />
-</p>
-
-<p align="center">
-  <img src="assets/before4.jpg" width="10%" />
-  <img src="assets/after4.jpg"  width="10%" />
-</p>
-
-<p align="center">
-  <img src="assets/before5.jpg" width="10%" />
-  <img src="assets/after5.jpg"  width="10%" />
-</p>
-
-<p align="center">
-  <em>À gauche : image dégradée • À droite : image restaurée par le modèle VAE-UNet</em>
-</p>
 
 
 ## ⚠️ Limites connues
