@@ -38,28 +38,28 @@ python scripts/inference.py
 ## 🖼️ Résultats — Avant / Après
 
 <p align="center">
-  <img src="assets/before1.jpg" width="30%" />
-  <img src="assets/after1.jpg"  width="30%" />
+  <img src="assets/before1.jpg" width="10%" />
+  <img src="assets/after1.jpg"  width="10%" />
 </p>
 
 <p align="center">
-  <img src="assets/before2.jpg" width="30%" />
-  <img src="assets/after2.jpg"  width="30%" />
+  <img src="assets/before2.jpg" width="10%" />
+  <img src="assets/after2.jpg"  width="10%" />
 </p>
 
 <p align="center">
-  <img src="assets/before3.jpg" width="30%" />
-  <img src="assets/after3.jpg"  width="30%" />
+  <img src="assets/before3.jpg" width="10%" />
+  <img src="assets/after3.jpg"  width="10%" />
 </p>
 
 <p align="center">
-  <img src="assets/before4.jpg" width="30%" />
-  <img src="assets/after4.jpg"  width="30%" />
+  <img src="assets/before4.jpg" width="10%" />
+  <img src="assets/after4.jpg"  width="10%" />
 </p>
 
 <p align="center">
-  <img src="assets/before5.jpg" width="30%" />
-  <img src="assets/after5.jpg"  width="30%" />
+  <img src="assets/before5.jpg" width="10%" />
+  <img src="assets/after5.jpg"  width="10%" />
 </p>
 
 <p align="center">
