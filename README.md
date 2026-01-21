@@ -37,8 +37,6 @@ python scripts/inference.py
 
 ## 🖼️ Résultats — Avant / Après
 
-## 🖼️ Résultats — Avant / Après (128×128)
-
 <table align="center">
   <tr>
     <th>Avant ❌</th>
@@ -61,8 +59,6 @@ python scripts/inference.py
     <td><img src="assets/after4.jpg"  width="96"/></td>
     <td><img src="assets/before5.jpg" width="96"/></td>
     <td><img src="assets/after5.jpg"  width="96"/></td>
-    <td></td>
-    <td></td>
   </tr>
 </table>
 
