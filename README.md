@@ -32,6 +32,8 @@ pip install -r requirements.txt
 
 # 2) Lancer l'inférence
 python scripts/inference.py
+```
+---
 
 ## 🖼️ Résultats — Avant / Après
 
