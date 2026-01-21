@@ -24,18 +24,54 @@ Projet Reseaux de Neuronnes M2 S1
 
 ---
 
-## ✨ Démo rapide (TL;DR)
+## <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg" width="22"/> Prérequis (checkpoint)
+ Prérequis (checkpoint)
+
+> <img src="https://cdn.jsdelivr.net/npm/heroicons@2.0.18/24/solid/exclamation-triangle.svg" width="20"/> Le script d’inférence nécessite le fichier **`vae_unet_best.pth`** (non inclus sur le repo).
+> Place-le ici : `scripts/vae_unet_best.pth`
+
+## <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" width="22"/> Utilisation simple (Avant → Après)
+ Utilisation simple (Avant → Après)
+
+1. Ajouter une image dégradée nommée **`before.jpg`** dans le dossier `assets/`.
+2. Lancer le script d’inférence.
+3. L’image restaurée est générée automatiquement sous le nom **`after.jpg`** dans `assets/`.
+
+<img src="https://cdn.jsdelivr.net/npm/heroicons@2.0.18/24/solid/arrow-right.svg" width="20"/>
+ Le modèle travaille en résolution **128×128**.
+
+
+## <img src="https://cdn.jsdelivr.net/npm/heroicons@2.0.18/24/solid/sparkles.svg" width="20"/> Démo rapide (TL;DR)
 
 ```bash
 # 1) Installer les dépendances
 pip install -r requirements.txt
 
 # 2) Lancer l'inférence
-python scripts/inference.py
+python scripts/infer_patch_vae_unet.py
 ```
 ---
 
-## 🖼️ Résultats — Avant / Après
+## <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/opencv/opencv-original.svg" width="22"/> Upscale de l’image restaurée
+
+
+Un script d’upscaling basé sur **Real-ESRGAN** est fourni pour augmenter la résolution
+de l’image restaurée (×4).
+
+<img src="https://cdn.jsdelivr.net/npm/heroicons@2.0.18/24/solid/exclamation-triangle.svg" width="20"/> Ce script est **expérimental** : il améliore la résolution visuelle mais peut introduire des artefacts.
+
+### Fonctionnement
+
+- Entrée : `assets/before.jpg` (image restaurée en 128×128)
+- Sortie : `assets/after.jpg` (image upscalée ~512×512)
+---
+
+
+> <img src="https://cdn.jsdelivr.net/npm/heroicons@2.0.18/24/solid/information-circle.svg" width="20"/> L’upscaling est indépendant du modèle **VAE-UNet** et n’améliore pas
+> les détails sémantiques, uniquement la résolution visuelle perçue.
+
+
+## <img src="https://cdn.jsdelivr.net/npm/heroicons@2.0.18/24/solid/photo.svg" width="20"/> Résultats — Avant / Après
 
 <table align="center">
   <tr>
@@ -64,15 +100,34 @@ python scripts/inference.py
 
 
 
-## ⚠️ Limites connues
+## <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" width="22"/> Limites connues
 
-- 🧍‍♂️ Le modèle fonctionne **nettement mieux lorsqu’une seule personne** est présente dans l’image.
-- 👥 Les performances diminuent lorsque **plusieurs personnes** apparaissent simultanément.
-- 🖼️ La résolution est limitée à **128×128 pixels**, ce qui peut entraîner :
+
+- <img src="https://cdn.jsdelivr.net/npm/heroicons@2.0.18/24/solid/user.svg" width="20"/> Le modèle fonctionne **nettement mieux lorsqu’une seule personne** est présente dans l’image.
+- <img src="https://cdn.jsdelivr.net/npm/heroicons@2.0.18/24/solid/users.svg" width="20"/> Les performances diminuent lorsque **plusieurs personnes** apparaissent simultanément.
+- <img src="https://cdn.jsdelivr.net/npm/heroicons@2.0.18/24/solid/photo.svg" width="20"/> La résolution est limitée à **128×128 pixels**, ce qui peut entraîner :
   - une perte de détails fins,
   - des artefacts sur les visages ou les contours complexes.
-- 🧠 Ces limites sont liées :
+- <img src="https://cdn.jsdelivr.net/npm/heroicons@2.0.18/24/solid/cpu-chip.svg" width="20"/> Ces limites sont liées :
   - à la capacité du modèle,
   - à la résolution d’entraînement,
   - et à la distribution des données d’apprentissage.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
