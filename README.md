@@ -24,6 +24,18 @@ Projet Reseaux de Neuronnes M2 S1
 
 ---
 
+# Contexte
+
+Dans ce projet, nous adoptons deux approches distinctes basées sur des modèles génératifs : les Variational Autoencoders (VAE), privilégiant une reconstruction stable et cohérente, et les Generative Adversarial Networks (GAN), orientés vers la génération d’images. Cette comparaison permettra d’analyser les avantages et les limites de chaque modèle dans le cadre de la restauration et de la colorisation d’images.
+
+L'objectif ici est de savoir, pour notre cas, quel est le meilleur modèle.
+
+Enfin, une dernière partie (bonus) sera dédiée à l’upscaling, dont l’objectif est d’augmenter la résolution des images restaurées afin d’améliorer leur qualité perceptuelle. Pour cela, nous allons implémenter un réseaux de neurones convolutifs (CNN). 
+
+# Partie 1 : Restauration d'images
+
+## <span style="color:#FAC898">Approche VAE</span>
+
 ## <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg" width="22"/> Prérequis (checkpoint)
  Prérequis (checkpoint)
 
@@ -112,6 +124,11 @@ de l’image restaurée (×4).
   - à la capacité du modèle,
   - à la résolution d’entraînement,
   - et à la distribution des données d’apprentissage.
+
+
+---
+
+## <span style="color:#FAC898">Approche GAN</span>
 
 
 
