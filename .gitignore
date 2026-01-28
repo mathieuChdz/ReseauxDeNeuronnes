@@ -11,7 +11,7 @@ rn/
 /scripts/test_results_metrics/
 /scripts/*.pth
 /scripts/*.csv
-/models/checkpoints_gan/*.pth
+/models/checkpoints_gan/*
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]
