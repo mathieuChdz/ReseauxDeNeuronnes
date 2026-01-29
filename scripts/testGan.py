@@ -8,7 +8,7 @@ import os
 # ------------ CONFIGURATION ------------
 IMAGE_INPUT_PATH = "data\\degraded_images\\degraded_image_00999.jpg"
 IMAGE_OUTPUT_PATH = "data\\after.jpg"
-CHECKPOINT_PATH = "models\\checkpoints\\checkpoint_epoch_60.pth"  # <-- ton .pth avec gen_state_dict
+CHECKPOINT_PATH = "models\\GAN\\checkpoints\\checkpoint_epoch_60.pth"  # <-- ton .pth avec gen_state_dict
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 
