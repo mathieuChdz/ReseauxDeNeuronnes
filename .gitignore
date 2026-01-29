@@ -1,3 +1,13 @@
+/data/train2014/
+/data
+/models/output_gan/
+/scripts/test_results_metrics/
+/scripts/samples/
+/scripts/*.pth
+/scripts/*.csv
+/scripts/*.jpg
+/weights/*.pth
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]
@@ -5,6 +15,9 @@ __pycache__/
 
 # C extensions
 *.so
+
+# env rn
+rn/*
 
 # Distribution / packaging
 .Python
