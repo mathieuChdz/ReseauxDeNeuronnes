@@ -8,7 +8,7 @@ import os
 # ------------ CONFIGURATION ------------
 IMAGE_INPUT_PATH = "assets\\before.jpg"
 IMAGE_OUTPUT_PATH = "assets\\after.jpg"
-CHECKPOINT_PATH = "models\\checkpoints\\gan_best.pth"
+CHECKPOINT_PATH = "models\\checkpoints_gan\\gan_best.pth"
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 

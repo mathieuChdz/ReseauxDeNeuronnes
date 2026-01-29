@@ -5,6 +5,7 @@ models/__pycache__/
 gan_env/
 rn/
 
+
 /models/output_gan/*
 /models/checkpoints/*
 /scripts/samples/
