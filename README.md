@@ -318,6 +318,67 @@ Les taux d’apprentissage du générateur et du discriminateur sont mis à jour
 
 ## <span style="color:#FAC898">Approche CNN</span>
 ---
+On utilise une approche basée sur les reseaux convolutifs, deux CNN distincts unepour traiter les images dégradées et un autre pour les colorier.
+l'objectif principal est d’obtenir une restauration fidèle et stable, en particulier au niveau des couleurs, via une pipeline déterministe
+# Vue de la pipeline
+méthode repose sur deux réseaux CNN successifs, avec chacun un rôle distinct :
+1. CNN1 : restauration structurelle de l’image dégradée
+
+2. CNN2 : reconstruction des couleurs à partir de la luminance
+
+# CNN1 : Reseau de Restauration 
+
+Le premier est utilisé pour corriger les dégradations globales (bruit, peu de contraste, etc). Ca nous permet d'obtenir une image structurellement cohérente, mais avec des couleurs tres limitées. Afin de pallier ce problème un second réseau est introduit pour se concentrer spécifiquement sur la reconstruction de la couleur.
+
+1. Entrée : image dégradée (RGB)
+
+2. Sortie : image restaurée (RGB)
+
+3. Architecture : blocs convolutifs résiduels
+
+Ce réseau est entraîné avec une fonction de perte sévère afin de garantir une reconstruction structurelle stable.
+
+Ce qu'on gagne ne terme de texture / neteté on pert en couleurs, avec un aspet désaturé et fades (sepia / noir & blanc)
+
+
+
+
+#  CNN : Reseau de coloration
+
+Le second réseau est un U-Net dédié à la reconstruction des couleurs.
+
+1. Entrée : luminance extraite de l’image restaurée par CNN1
+2. Sortie : image RGB complète
+3. Architecture : U-Net avec skip connections
+
+Predir a partir de la luminance permet d'eviter que le reseau ne previligie les solutions grises et mieux preserver la saturation
+
+
+Les skip connections assurent la conservation des détails spatiaux tout au long du réseau et facilitent la propagation de l’information de couleur.
+
+
+# Fonction de Loss 
+l'’entraînement du réseau de colorisation repose principalement sur une perte L1 entre l’image prédite et l’image de référence.
+
+Ce choix est motivé par :
+
+. une meilleure stabilité que la perte L2,
+
+. une réduction des artefacts,
+
+. une meilleure préservation des couleurs.
+
+Des pertes perceptuelles basées sur des réseaux pré-entraînés (VGG) ont été envisagées, mais leur coût computationnel élevé sur CPU a limité leur utilisation dans la version finale.
+
+#Résultats et discussino
+bla bla bla sur la restauration 
+
+Limites:
+. incapacité de gerer les details
+. coloration trop extreme ou extremement fade (parler des autres versions entamées avec une loss plus généreuse qui genere des images entierment en rouge etc)
+...
+
+---
 
 # Partie 2 : Upscale
 
