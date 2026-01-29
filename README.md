@@ -65,9 +65,31 @@ Une bonne organisation est nécéssaire pour une meilleure compréhension.
 
 # Partie 1 : Restauration d'images
 
-Pour l'exécution des modèles entrainé, nous avons décidé d'utiliser un google collab (notament du à la taille des .pth et pour faciliter les phases d'exécution).
+<div align="center">
+  <br />
+  
+  ### **Vivez l'expérience de restauration en un clic**
+  
+  > [!IMPORTANT]
+  > **Accès direct au Studio de Restauration (GAN + VAE + HD Upscale)**
+  
+  [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1aqXILdJ1NoTIZO8X2fN-VoZoep5-uSW1?usp=sharing)
 
-Lien du collab : https://colab.research.google.com/drive/1aqXILdJ1NoTIZO8X2fN-VoZoep5-uSW1?usp=sharing
+  **Pourquoi tester notre Colab ?**
+  *Aucune installation requise* • *GPU T4 gratuit* • *Pipeline complet (128px ➡️ 512px HD)*
+  
+  <br />
+
+  ### **Modèles pré-entraînés (Poids .pth)**
+  Si vous préférez l'exécution locale, téléchargez nos meilleurs checkpoints :
+
+  [![GAN Weights](https://img.shields.io/badge/Model-GAN_Best-FFee83?style=for-the-badge&logo=google-drive&logoColor=black)](https://drive.google.com/file/d/1qr1Gj9-yr_U8-8676P4Oft9xFY2B3Y42/view?usp=sharing)
+  [![VAE Weights](https://img.shields.io/badge/Model-VAE_Best-FAC898?style=for-the-badge&logo=google-drive&logoColor=black)](https://drive.google.com/file/d/17ON3jYFBf_VgBfE8d3ZpI23QxL5kkZ8t/view?usp=sharing)
+
+  <br />
+</div>
+
+---
 
 ## <span style="color:#FAC898">Dataset</span>
 
@@ -119,7 +141,53 @@ Les nouvelles images ont les caractériques suivantes :
 
 ## Explication du modèle
 
---> parler de ce qu'on a fait --> vite fais genre montrer le modele et le train
+Voici une proposition de modification pour ta section **Approche VAE**, rédigée avec le même style visuel et le même niveau de détail que ta section GAN :
+
+---
+
+### <span style="color:#FAC898">Approche VAE</span>
+
+## Explication du modèle
+
+Le modèle repose sur une architecture hybride combinant la modélisation probabiliste des VAE et la précision des U-Net.
+
+### Architecture <span style="color:#FFee83">VAE-UNet</span> :
+
+* **Encodeur** :
+  Blocs convolutifs (Conv + BatchNorm + LeakyReLU) extrayant les caractéristiques latentes.
+
+
+* **Bottleneck (Espace Latent)** :
+  Apprentissage des vecteurs $\mu$ (moyenne) et $\sigma$ (écart-type). Utilisation du **Reparameterization Trick** pour permettre la backpropagation.
+
+
+* **Décodeur** :
+  Reconstruction par convolutions transposées avec Skip-connections pour préserver les textures fines de l'image source.
+
+
+
+
+### Training :
+
+L'entraînement du VAE repose sur l'optimisation de deux objectifs complémentaires via une fonction de perte composite :
+
+#### 1. Perte de Reconstruction (MSE ou L1)
+
+* Mesure la fidélité de l'image restaurée par rapport à l'image cible (ground truth).
+* Force le décodeur à reconstruire des images visuellement cohérentes.
+
+#### 2. Divergence de Kullback-Leibler (KLD)
+
+* Régularise l'espace latent en forçant la distribution apprise à se rapprocher d'une distribution normale standard .
+* Évite le sur-apprentissage et assure une structure continue dans l'espace latent.
+
+#### 3. Optimisation
+
+* Utilisation de l'optimiseur **Adam**.
+* Ajustement dynamique du poids de la KLD (-VAE) pour équilibrer la netteté de l'image et la régularité du modèle.
+
+---
+
 
 ## <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" width="22"/> Utilisation simple (Avant → Après)
  Utilisation simple (Avant → Après)
