@@ -1,12 +1,12 @@
 /data/*
 /weights/*
-
 models/__pycache__/
 /models/*.pth
 gan_env/
 rn/
 
 /models/output_gan/*
+/models/checkpoints/*
 /scripts/samples/
 /scripts/test_results_metrics/
 /scripts/*.pth
