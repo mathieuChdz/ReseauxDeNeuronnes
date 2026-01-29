@@ -6,9 +6,9 @@ from PIL import Image
 import os
 
 # ------------ CONFIGURATION ------------
-IMAGE_INPUT_PATH = "data\\degraded_images\\degraded_image_00999.jpg"
-IMAGE_OUTPUT_PATH = "data\\after.jpg"
-CHECKPOINT_PATH = "models\\checkpoints\\checkpoint_epoch_60.pth"  # <-- ton .pth avec gen_state_dict
+IMAGE_INPUT_PATH = "assets\\before.jpg"
+IMAGE_OUTPUT_PATH = "assets\\after.jpg"
+CHECKPOINT_PATH = "models\\checkpoints\\gan_best.pth"
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 
@@ -74,7 +74,7 @@ def run_inference():
         print(f"Erreur : Le fichier {CHECKPOINT_PATH} est introuvable.")
         return
 
-    checkpoint = torch.load(CHECKPOINT_PATH, map_location=DEVICE)
+    checkpoint = torch.load(CHECKPOINT_PATH, map_location=DEVICE, weights_only=False)
 
     # Ton training sauvegarde "gen_state_dict"
     if isinstance(checkpoint, dict) and "gen_state_dict" in checkpoint:
@@ -108,7 +108,7 @@ def run_inference():
         restored = gen(degraded)
 
     # 5) Dé-normalisation : [-1,1] -> [0,1]
-    restored = (restored.squeeze(0).cpu() + 1.0) / 2.0
+    restored = (restored.squeeze(0).cpu() * 0.5) + 0.5
     restored = torch.clamp(restored, 0, 1)
 
     save_image(restored, IMAGE_OUTPUT_PATH)
