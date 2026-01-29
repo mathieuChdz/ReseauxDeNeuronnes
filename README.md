@@ -65,6 +65,10 @@ Une bonne organisation est nécéssaire pour une meilleure compréhension.
 
 # Partie 1 : Restauration d'images
 
+Pour l'exécution des modèles entrainé, nous avons décidé d'utiliser un google collab (notament du à la taille des .pth et pour faciliter les phases d'exécution).
+
+Lien du collab : https://colab.research.google.com/drive/1aqXILdJ1NoTIZO8X2fN-VoZoep5-uSW1?usp=sharing
+
 ## <span style="color:#FAC898">Dataset</span>
 
 Le dataset utilisé est un dataset de ~60 000 images. Un prétraitement a été effectué sur celles-ci pour les détériorer.
