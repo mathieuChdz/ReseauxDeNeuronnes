@@ -33,6 +33,9 @@ __pycache__/
 # env rn
 rn/*
 
+# env rn
+rn/*
+
 # Distribution / packaging
 .Python
 build/
