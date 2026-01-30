@@ -1,16 +1,31 @@
-from super_image import EdsrModel, ImageLoader
+import os
 from PIL import Image
+from tqdm import tqdm
 
-# 1. Charger votre image restaurée en 128x128
-image = Image.open('scripts\\resultat_restauration_128.png')
+RESTORED_DIR = "./restored_outputs_train"
+HR_DIR = "../data/train/train2014"
+OUT_DIR = "restored_upscaled_hr"
 
-# 2. Charger le modèle pré-entraîné (ex: EDSR x4)
-model = EdsrModel.from_pretrained('eugenesiow/edsr-base', scale=4)
+N = 100  # seulement les 100 premières
 
-# 3. Effectuer l'upscale (128x128 -> 512x512)
-inputs = ImageLoader.load_image(image)
-preds = model(inputs)
+os.makedirs(OUT_DIR, exist_ok=True)
 
-# 4. Sauvegarder le résultat final "pro"
-ImageLoader.save_image(preds, 'scripts\\output_final_512.png')
-print("Upscale terminé !")
+restored_files = sorted(os.listdir(RESTORED_DIR))[:N]
+hr_files = sorted(os.listdir(HR_DIR))[:N]
+
+for i in tqdm(range(N), desc="Upscaling restored images"):
+    rest_img = Image.open(
+        os.path.join(RESTORED_DIR, restored_files[i])
+    ).convert("RGB")
+
+    hr_img = Image.open(
+        os.path.join(HR_DIR, hr_files[i])
+    ).convert("RGB")
+
+    #  resize vers la taille HR
+    rest_up = rest_img.resize(hr_img.size, Image.BICUBIC)
+
+    # nom propre basé sur la HR
+    out_name = hr_files[i]
+    rest_up.save(os.path.join(OUT_DIR, out_name), quality=95)
+print(" Upscaling done. Upscaled images saved in:", OUT_DIR)

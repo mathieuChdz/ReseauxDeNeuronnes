@@ -13,6 +13,7 @@
 /scripts/checkpoints/
 /scripts/checkpoints_color/
 /scripts/cache_color/
+/scripts/cache_color_restored/
 /scripts/samples_colorclean/
 /scripts/samples_color/
 /scripts/cnn_checkpoint/
