@@ -354,7 +354,9 @@ Ce réseau est entraîné avec une fonction de perte sévère, On combine plusie
 
 En pratique ça marche plutôt bien sur la netteté, mais ce qu'on gagne ne terme de texture / neteté on perd en couleurs, avec un aspet désaturé et fades (sepia / noir & blanc)
 
-[insert image de cnn1]
+<img width="526" height="531" alt="image" src="https://github.com/user-attachments/assets/fd307176-6c93-42ef-a779-26d4fbd4343a" />
+
+
 
 #  CNN2 : Reseau de coloration
 
@@ -382,7 +384,9 @@ Ce choix est motivé par :
 
 Des pertes perceptuelles basées sur des réseaux pré-entraînés (VGG) ont été envisagées, mais leur coût computationnel élevé sur CPU a limité leur utilisation dans la version finale
 
-[insert image res de cnn2]
+
+<img width="392" height="132" alt="image" src="https://github.com/user-attachments/assets/4aa72bd4-4143-4f52-a3b3-61e2141f0f85" />
+
 
 #Résultats et discussino
 Globalement :
@@ -393,8 +397,12 @@ Globalement :
 
 ## Limites:
 . incapacité de gerer les details
-. coloration trop extreme ou extremement fade (quelques autres versions entamées avec une loss plus généreuse genere à chaque epoque des images 'biaisées' entierment sur une coueur (rouge, bleu, etc)
-[insert exemple ici]
+. coloration trop extreme ou extremement fade (quelques autres versions entamées avec une loss plus généreuse genere à chaque epoque des images 'biaisées' entierment sur une coueur (rouge, jaune, etc)
+
+
+<img width="1042" height="132" alt="image" src="https://github.com/user-attachments/assets/ca8451af-c09a-4c3b-ba56-35a625cbf78c" />
+
+<img width="1042" height="132" alt="image" src="https://github.com/user-attachments/assets/c6525cb8-f875-415e-a968-8b689173b4a2" />
 
 ...
 
@@ -431,11 +439,6 @@ Le deuxieme Upscale nous permet de redimensionner les images vers leurs tailles 
  
 
 Ce dernier est réalisé par interpolation bicubique (PIL Image.BICUBIC). Cette méthode est un algorithme classique de rééchantillonnage (non basé sur l’apprentissage) qui estime les pixels manquants à partir du voisinage local, produisant un résultat généralement plus lisse que nearest ou bilinear. Elle ne reconstruit toutefois pas de nouveaux détails fins comme le ferait un modèle de super-résolution.
-
-[insert image]
-
-
-
 
 
 
