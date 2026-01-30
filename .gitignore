@@ -11,6 +11,8 @@
 /scripts/restored_upscaled_test/
 /scripts/color_grids/
 /scripts/checkpoints/
+/scripts/checkpoints_color/
+/scripts/cache_color/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
