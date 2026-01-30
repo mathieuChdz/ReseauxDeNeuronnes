@@ -330,17 +330,18 @@ méthode repose sur deux réseaux CNN successifs, avec chacun un rôle distinct 
 
 Le premier est utilisé pour corriger les dégradations globales (bruit, peu de contraste, etc). Ca nous permet d'obtenir une image structurellement cohérente, mais avec des couleurs tres limitées. Afin de pallier ce problème un second réseau est introduit pour se concentrer spécifiquement sur la reconstruction de la couleur.
 
-1. Entrée : image dégradée (RGB)
+Il prend en entrée une image RGB normalisée dans l’espace [-1,1] et prédit une image restaurée dans le même espace.
 
-2. Sortie : image restaurée (RGB)
 
-3. Architecture : blocs convolutifs résiduels
+Ce réseau est entraîné avec une fonction de perte sévère, melange de :
 
-Ce réseau est entraîné avec une fonction de perte sévère afin de garantir une reconstruction structurelle stable.
+1. L1 : reconstruction de pixels stable
+2. MSE ! penalise des erreurs fortes
+3. Perceptual loss (VGG16) : amelioration visuelle (textures, details, ...)
+
+afin de garantir une reconstruction  stable.
 
 Ce qu'on gagne ne terme de texture / neteté on pert en couleurs, avec un aspet désaturé et fades (sepia / noir & blanc)
-
-
 
 
 #  CNN : Reseau de coloration
@@ -349,7 +350,7 @@ Le second réseau est un U-Net dédié à la reconstruction des couleurs.
 
 1. Entrée : luminance extraite de l’image restaurée par CNN1
 2. Sortie : image RGB complète
-3. Architecture : U-Net avec skip connections
+3. Architecture : U-Net (encodeur/décodeur avec skip connections) pour capturer le context et conservation des details
 
 Predir a partir de la luminance permet d'eviter que le reseau ne previligie les solutions grises et mieux preserver la saturation
 
@@ -362,20 +363,21 @@ l'’entraînement du réseau de colorisation repose principalement sur une pert
 
 Ce choix est motivé par :
 
-. une meilleure stabilité que la perte L2,
+. une meilleure stabilité que la perte L2
 
-. une réduction des artefacts,
+. une réduction des artefacts
 
-. une meilleure préservation des couleurs.
+. une meilleure préservation des couleurs
 
 Des pertes perceptuelles basées sur des réseaux pré-entraînés (VGG) ont été envisagées, mais leur coût computationnel élevé sur CPU a limité leur utilisation dans la version finale.
 
 #Résultats et discussino
-bla bla bla sur la restauration 
+bla bla bla sur la restauration effective etc, etc
 
 Limites:
 . incapacité de gerer les details
-. coloration trop extreme ou extremement fade (parler des autres versions entamées avec une loss plus généreuse qui genere des images entierment en rouge etc)
+. coloration trop extreme ou extremement fade (parler des autres versions entamées avec une loss plus généreuse qui genere des images entierment en rouge etc
+
 ...
 
 ---
