@@ -325,13 +325,17 @@ Les taux d’apprentissage du générateur et du discriminateur sont mis à jour
 
 ## <span style="color:#FAC898">Approche CNN</span>
 ---
-On utilise une approche basée sur les reseaux convolutifs, deux CNN distincts unepour traiter les images dégradées et un autre pour les colorier.
-l'objectif principal est d’obtenir une restauration fidèle et stable, en particulier au niveau des couleurs, via une pipeline déterministe
+Dans cette partie, on utilise une approche CNN avec une pipeline simple et déterministe en deux réseaux.
+L’idée c’est de séparer ce qui est “structure” (netteté, détails, etc) de ce qui est “couleur”, car faire les deux en même temps donne souvent des résultats instables.
+
 # Vue de la pipeline
 méthode repose sur deux réseaux CNN successifs, avec chacun un rôle distinct :
-1. CNN1 : restauration structurelle de l’image dégradée
+1. CNN1 : restauration structurelle de l’image dégradée, enlève les défauts (bruit, contraste faible, flou…) et récupère une image plus propre
 
-2. CNN2 : reconstruction des couleurs à partir de la luminance
+2. CNN2 : recolorise l’image à partir d’une version en grayscale/luminance, pour éviter que le modèle parte dans des couleurs random
+
+
+[insert image la]
 
 # CNN1 : Reseau de Restauration 
 
@@ -340,24 +344,24 @@ Le premier est utilisé pour corriger les dégradations globales (bruit, peu de 
 Il prend en entrée une image RGB normalisée dans l’espace [-1,1] et prédit une image restaurée dans le même espace.
 
 
-Ce réseau est entraîné avec une fonction de perte sévère, melange de :
+Ce réseau est entraîné avec une fonction de perte sévère, On combine plusieurs losses pour stabiliser :
 
-1. L1 : reconstruction de pixels stable
-2. MSE ! penalise des erreurs fortes
-3. Perceptual loss (VGG16) : amelioration visuelle (textures, details, ...)
+1. L1 : reconstruction pixel stable
 
-afin de garantir une reconstruction  stable.
+2. MSE : pénalise plus fort les grosses erreurs
 
-Ce qu'on gagne ne terme de texture / neteté on pert en couleurs, avec un aspet désaturé et fades (sepia / noir & blanc)
+3. Perceptual loss (VGG16) : améliore le rendu visuel (textures / détails)
 
+En pratique ça marche plutôt bien sur la netteté, mais ce qu'on gagne ne terme de texture / neteté on perd en couleurs, avec un aspet désaturé et fades (sepia / noir & blanc)
 
-#  CNN : Reseau de coloration
+[insert image de cnn1]
 
-Le second réseau est un U-Net dédié à la reconstruction des couleurs.
+#  CNN2 : Reseau de coloration
 
-1. Entrée : luminance extraite de l’image restaurée par CNN1
-2. Sortie : image RGB complète
-3. Architecture : U-Net (encodeur/décodeur avec skip connections) pour capturer le context et conservation des details
+Le second réseau est un U-Net qui reconstruit une image RGBà partir de la luminance
+
+1. Entrée : luminance extraite de l’image restaurée par CNN1 (1 canal)
+2. Sortie : image RGB complète (3 canaux)
 
 Predir a partir de la luminance permet d'eviter que le reseau ne previligie les solutions grises et mieux preserver la saturation
 
@@ -376,14 +380,21 @@ Ce choix est motivé par :
 
 . une meilleure préservation des couleurs
 
-Des pertes perceptuelles basées sur des réseaux pré-entraînés (VGG) ont été envisagées, mais leur coût computationnel élevé sur CPU a limité leur utilisation dans la version finale.
+Des pertes perceptuelles basées sur des réseaux pré-entraînés (VGG) ont été envisagées, mais leur coût computationnel élevé sur CPU a limité leur utilisation dans la version finale
+
+[insert image res de cnn2]
 
 #Résultats et discussino
-bla bla bla sur la restauration effective etc, etc
+Globalement :
 
-Limites:
+ - CNN1 améliore bien la structure mais donne un rendu un peu gris/fade
+
+ - CNN2 améliore la couleur progressivement (vers epoch 6–8 c’est visible)
+
+## Limites:
 . incapacité de gerer les details
-. coloration trop extreme ou extremement fade (parler des autres versions entamées avec une loss plus généreuse qui genere des images entierment en rouge etc
+. coloration trop extreme ou extremement fade (quelques autres versions entamées avec une loss plus généreuse genere à chaque epoque des images 'biaisées' entierment sur une coueur (rouge, bleu, etc)
+[insert exemple ici]
 
 ...
 
@@ -416,6 +427,12 @@ Un script d’upscaling basé sur **Real-ESRGAN** est fourni pour augmenter la r
 
 ### Résolution taille initiale
 
+Le deuxieme Upscale nous permet de redimensionner les images vers leurs tailles originelles de la base kaggle High Res (comme les sorties du modèle de restauration sont générées en résolution fixe (128×128))
+ 
+
+Ce dernier est réalisé par interpolation bicubique (PIL Image.BICUBIC). Cette méthode est un algorithme classique de rééchantillonnage (non basé sur l’apprentissage) qui estime les pixels manquants à partir du voisinage local, produisant un résultat généralement plus lisse que nearest ou bilinear. Elle ne reconstruit toutefois pas de nouveaux détails fins comme le ferait un modèle de super-résolution.
+
+[insert image]
 
 
 
