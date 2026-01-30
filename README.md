@@ -67,13 +67,18 @@ Une bonne organisation est nécéssaire pour une meilleure compréhension.
 
 <div align="center">
   <br />
-  
-  ### **Vivez l'expérience de restauration en un clic**
-  
-  > [!IMPORTANT]
-  > **Accès direct au Studio de Restauration (GAN + VAE + HD Upscale)**
-  
-  [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1aqXILdJ1NoTIZO8X2fN-VoZoep5-uSW1?usp=sharing)
+
+  <p align="center">
+  <code style="color: #ff5555; font-size: 1.2em;"><b>Accès direct au test de Restauration (GAN + VAE + HD Upscale)</b></code>
+</p>
+
+  <div align="center">
+  <br />
+  <a href="https://colab.research.google.com/drive/1aqXILdJ1NoTIZO8X2fN-VoZoep5-uSW1?usp=sharing">
+    <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab" width="250px">
+  </a>
+  <p><i>Cliquez ici pour tester nos modèles GAN, VAE et CNN en temps réel</i></p>
+</div>
 
   **Pourquoi tester notre Colab ?**
   *Aucune installation requise* • *GPU T4 gratuit* • *Pipeline complet (128px ➡️ 512px HD)*
@@ -84,7 +89,7 @@ Une bonne organisation est nécéssaire pour une meilleure compréhension.
   Si vous préférez l'exécution locale, téléchargez nos meilleurs checkpoints :
 
   [![GAN Weights](https://img.shields.io/badge/Model-GAN_Best-FFee83?style=for-the-badge&logo=google-drive&logoColor=black)](https://drive.google.com/file/d/1qr1Gj9-yr_U8-8676P4Oft9xFY2B3Y42/view?usp=sharing)
-  [![VAE Weights](https://img.shields.io/badge/Model-VAE_Best-FAC898?style=for-the-badge&logo=google-drive&logoColor=black)](https://drive.google.com/file/d/17ON3jYFBf_VgBfE8d3ZpI23QxL5kkZ8t/view?usp=sharing)
+  [![VAE Weights](https://img.shields.io/badge/Model-VAE_Best-FAC898?style=for-the-badge&logo=google-drive&logoColor=black)](https://drive.google.com/file/d/17ON3jYFBf_VgBfE8d3ZpI23QxL5kkZ8t/view?usp=sharing)[![CNN Weights](https://img.shields.io/badge/Model-CNN_Best-FAC898?style=for-the-badge&logo=google-drive&logoColor=black)](https://drive.google.com/file/d/1Wx7S1T8_-anwkrkQvld8F0LXliBpH97w/view?usp=sharing)
 
   <br />
 </div>
