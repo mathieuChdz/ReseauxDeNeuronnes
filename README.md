@@ -30,7 +30,7 @@ Dans ce projet, nous adoptons trois approches distinctes basées sur des modèle
 
 L'objectif ici est de savoir, pour notre cas, quel est le meilleur modèle.
 
-Enfin, une dernière partie (bonus) pourra être dédiée à l’upscaling, dont l’objectif est d’augmenter la résolution des images restaurées afin d’améliorer leur qualité perceptuelle. Pour cela, nous allons implémenter un CNN. 
+Enfin, une dernière partie (bonus) pourra être dédiée à l’upscaling, dont l’objectif est d’augmenter la résolution des images restaurées afin d’améliorer leur qualité perceptuelle. 
 
 # Partie 0 : Organisation du projet
 
@@ -93,7 +93,9 @@ Une bonne organisation est nécéssaire pour une meilleure compréhension.
 
 ## <span style="color:#FAC898">Dataset</span>
 
-Le dataset utilisé est un dataset de ~60 000 images. Un prétraitement a été effectué sur celles-ci pour les détériorer.
+Le dataset utilisé est un dataset de ~60 000 images aléatoires. Un prétraitement a été effectué sur celles-ci pour les détériorer.
+
+Lien du dataset (pris sur kaggle) : https://www.kaggle.com/datasets/starktony45/image-dataset/data
 
 Les nouvelles images ont les caractériques suivantes :
 * Redimensionnement --> 128x128
@@ -382,11 +384,16 @@ Limites:
 
 # Partie 2 : Upscale
 
-## <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/opencv/opencv-original.svg" width="22"/> Upscale de l’image restaurée -- Algo de base
+## <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/opencv/opencv-original.svg" width="22"/> (BONUS) Upscale de l’image restaurée -- Algo récupérer sur un gitgub
 
 
-Un script d’upscaling basé sur **Real-ESRGAN** est fourni pour augmenter la résolution
-de l’image restaurée (×4).
+### Résolution x2 x4
+
+Ce premier upscale est tiré d'un dépôt git et nous permet de comprendre cela fonctionne et avoir un premier résultat.
+
+Lien du dépôt : https://github.com/sberbank-ai/Real-ESRGAN.git
+
+Un script d’upscaling basé sur **Real-ESRGAN** est fourni pour augmenter la résolution de l’image restaurée (×4).
 
 <img src="https://cdn.jsdelivr.net/npm/heroicons@2.0.18/24/solid/exclamation-triangle.svg" width="20"/> Ce script est **expérimental** : il améliore la résolution visuelle mais peut introduire des artefacts.
 
@@ -400,7 +407,8 @@ de l’image restaurée (×4).
 > <img src="https://cdn.jsdelivr.net/npm/heroicons@2.0.18/24/solid/information-circle.svg" width="20"/> L’upscaling est indépendant du modèle **VAE-UNet** et n’améliore pas
 > les détails sémantiques, uniquement la résolution visuelle perçue.
 
-## <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/opencv/opencv-original.svg" width="22"/> Upscale de l’image restaurée -- Notre propre CNN
+### Résolution taille initiale
+
 
 
 
